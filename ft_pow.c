@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                         ::::::::           */
-/*   ft_strlen.c                                         :+:    :+:           */
+/*   ft_pow.c                                            :+:    :+:           */
 /*                                                      +:+                   */
 /*   By: mde-beer <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
-/*   Created: 2024/10/07 17:58:09 by mde-beer       #+#    #+#                */
-/*   Updated: 2024/10/09 19:01:43 by mde-beer       ########   odam.nl        */
+/*   Created: 2024/10/14 14:27:27 by mde-beer       #+#    #+#                */
+/*   Updated: 2024/10/14 14:28:36 by mde-beer       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stddef.h>
 
-size_t	ft_strlen(const char *s)
+long	ft_pow(int base, unsigned int exponent)
 {
-	size_t	i;
+	long	ret;
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	ret = 1;
+	while (exponent--)
+		ret *= base;
+	return (ret);
 }

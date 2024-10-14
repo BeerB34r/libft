@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                         ::::::::           */
-/*   ft_strlen.c                                         :+:    :+:           */
+/*   ft_lstadd_back.c                                    :+:    :+:           */
 /*                                                      +:+                   */
 /*   By: mde-beer <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
-/*   Created: 2024/10/07 17:58:09 by mde-beer       #+#    #+#                */
-/*   Updated: 2024/10/09 19:01:43 by mde-beer       ########   odam.nl        */
+/*   Created: 2024/10/13 17:01:49 by mde-beer       #+#    #+#                */
+/*   Updated: 2024/10/14 14:09:15 by mde-beer       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stddef.h>
 
-size_t	ft_strlen(const char *s)
+#include "libft.h"
+
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	size_t	i;
+	t_list	*last;
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	if (!*lst)
+	{
+		*lst = new;
+		return ;
+	}
+	last = ft_lstlast(*lst);
+	last->next = new;
 }

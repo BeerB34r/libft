@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                         ::::::::           */
-/*   ft_strlen.c                                         :+:    :+:           */
+/*   ft_isspace.c                                        :+:    :+:           */
 /*                                                      +:+                   */
 /*   By: mde-beer <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
-/*   Created: 2024/10/07 17:58:09 by mde-beer       #+#    #+#                */
-/*   Updated: 2024/10/09 19:01:43 by mde-beer       ########   odam.nl        */
+/*   Created: 2024/10/14 14:16:07 by mde-beer       #+#    #+#                */
+/*   Updated: 2024/10/14 14:20:30 by mde-beer       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stddef.h>
 
-size_t	ft_strlen(const char *s)
+int	ft_isspace(int c)
 {
-	size_t	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	if (c == ' ')
+		return (1);
+	if (0x09 <= c && c <= 0x0D)
+		return (1);
+	return (0);
 }

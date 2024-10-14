@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                         ::::::::           */
-/*   ft_strlen.c                                         :+:    :+:           */
+/*   ft_putstr_fd.c                                      :+:    :+:           */
 /*                                                      +:+                   */
 /*   By: mde-beer <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
-/*   Created: 2024/10/07 17:58:09 by mde-beer       #+#    #+#                */
-/*   Updated: 2024/10/09 19:01:43 by mde-beer       ########   odam.nl        */
+/*   Created: 2024/10/10 15:38:27 by mde-beer       #+#    #+#                */
+/*   Updated: 2024/10/10 17:12:05 by mde-beer       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stddef.h>
 
-size_t	ft_strlen(const char *s)
+#include "libft.h"
+
+void	ft_putstr_fd(char *s, int fd)
 {
-	size_t	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	while (*s)
+		ft_putchar_fd(*s++, fd);
 }

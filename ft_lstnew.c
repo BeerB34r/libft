@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                         ::::::::           */
-/*   ft_strlen.c                                         :+:    :+:           */
+/*   ft_lstnew.c                                         :+:    :+:           */
 /*                                                      +:+                   */
 /*   By: mde-beer <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
-/*   Created: 2024/10/07 17:58:09 by mde-beer       #+#    #+#                */
-/*   Updated: 2024/10/09 19:01:43 by mde-beer       ########   odam.nl        */
+/*   Created: 2024/10/13 16:51:26 by mde-beer       #+#    #+#                */
+/*   Updated: 2024/10/13 16:53:34 by mde-beer       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stddef.h>
 
-size_t	ft_strlen(const char *s)
+#include "libft.h"
+
+t_list	*ft_lstnew(void *content)
 {
-	size_t	i;
+	t_list	*ret;
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	ret = (t_list *)ft_calloc(1, sizeof(t_list));
+	if (!ret)
+		return (NULL);
+	ret->content = content;
+	ret->next = NULL;
+	return (ret);
 }

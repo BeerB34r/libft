@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                         ::::::::           */
-/*   ft_strlen.c                                         :+:    :+:           */
+/*   ft_memset.c                                         :+:    :+:           */
 /*                                                      +:+                   */
 /*   By: mde-beer <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
-/*   Created: 2024/10/07 17:58:09 by mde-beer       #+#    #+#                */
-/*   Updated: 2024/10/09 19:01:43 by mde-beer       ########   odam.nl        */
+/*   Created: 2024/10/07 18:48:07 by mde-beer       #+#    #+#                */
+/*   Updated: 2024/10/09 19:00:29 by mde-beer       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stddef.h>
 
-size_t	ft_strlen(const char *s)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	size_t	i;
+	unsigned char	*d;
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	d = s;
+	while (n)
+	{
+		*d++ = (unsigned char)c;
+		n--;
+	}
+	return (s);
 }
