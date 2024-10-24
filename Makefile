@@ -22,7 +22,7 @@ fclean: clean
 	rm -f $(NAME)
 
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJ) $(BONUS_OBJ)
 
 re: fclean all
 
