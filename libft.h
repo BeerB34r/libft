@@ -6,7 +6,7 @@
 /*   By: mde-beer <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2024/10/07 17:18:24 by mde-beer       #+#    #+#                */
-/*   Updated: 2024/10/28 11:53:18 by mde-beer       ########   odam.nl        */
+/*   Updated: 2024/10/28 12:02:00 by mde-beer       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		ft_isalnum(int c);
 int		ft_isascii(int c);
 int		ft_isprint(int c);
 int		ft_isspace(int c);
-int		ft_isinset(int c, char *set);
+int		ft_isinset(int c, const char *set);
 // arithmetic functions
 int		ft_uint64_overflow_mul(uint64_t a, uint64_t b, uint64_t *product);
 long	ft_pow(int base, unsigned int exponent);

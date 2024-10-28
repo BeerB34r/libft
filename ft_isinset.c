@@ -6,16 +6,18 @@
 /*   By: mde-beer <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2024/10/28 11:51:25 by mde-beer       #+#    #+#                */
-/*   Updated: 2024/10/28 11:52:53 by mde-beer       ########   odam.nl        */
+/*   Updated: 2024/10/28 12:00:18 by mde-beer       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isinset(int c, char *set)
+int	ft_isinset(int c, const char *set)
 {
 	const unsigned char	chr = (unsigned char)c;
+	int					i;
 
-	while (*set)
-		if (chr == *set++)
-			return (1);
-	return (0);
+	i = -1;
+	while (set[++i])
+		if (chr == set[i])
+			return (i);
+	return (-1);
 }
