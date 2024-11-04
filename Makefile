@@ -1,29 +1,56 @@
-CC=cc
-CFLAGS=-Wall -Wextra -Werror
-SRC=ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_itoa.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c ft_split.c ft_strchr.c ft_strdup.c ft_striteri.c ft_strjoin.c ft_strlcat.c ft_strlcpy.c ft_strlen.c ft_strmapi.c ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_strtrim.c ft_substr.c ft_tolower.c ft_toupper.c ft_isupper.c ft_islower.c ft_isspace.c ft_uint64_overflow_mul.c ft_pow.c ft_isinset.c
-OBJ=$(SRC:.c=.o)
-BONUS_SRC=ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
-BONUS_OBJ=$(BONUS_SRC:.c=.o)
-NAME=libft.a
+ROOTDIR		=	$(shell pwd)
+SRCSDIR		=	$(ROOTDIR)/src
+INCL		=	$(ROOTDIR)/include
+ARS			=	$(ROOTDIR)/archives
+GNLDIR		=	$(SRCSDIR)/get_next_line
+FPFDIR		=	$(SRCSDIR)/ft_printf
+FTDIR		=	$(SRCSDIR)/libft_src
+LIBFT		=	$(ARS)/libinternalft.a
+LIBFPF		=	$(ARS)/libftprintf.a
+LIBGNL		=	$(ARS)/libgnl.a
+SRCDIRS		=	$(FTDIR) $(GNLDIR) $(FPFDIR)
+ARCHIVES	=	$(LIBFT) $(LIBGNL) $(LIBFPF)
+MRI			=	$(SRCSDIR)/script.m
+NAME		=	libft.a
 
-all: $(NAME)
+all			:	$(NAME)
 
-$(NAME): $(OBJ)
-	ar -rcs $@ $?
+$(NAME)		:	$(ARCHIVES) $(MRI)
+			ar -M < $(MRI)
 
-bonus: $(BONUS_OBJ)
-	make $(NAME)
-	ar -rcs $(NAME) $?
+$(MRI)		:
+			echo "create $(ROOTDIR)/$(NAME)" >$@
+			@for i in $(shell seq 1 $(words $(SRCDIRS))); do \
+				echo "addlib $$(echo $(ARCHIVES) | cut -d ' ' -f $$i)" >>$@; \
+			done
+			echo "save" >>$@
+			echo "end" >>$@
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c -o $@ $^
+$(ARCHIVES)	:
+			@for i in $(shell seq 1 $(words $(SRCDIRS))); do \
+				make NAME="$$(echo $(ARCHIVES) | cut -d ' ' -f $$i)" \
+						-C $$(echo $(SRCDIRS) | cut -d ' ' -f $$i) \
+						INCLUDE="$$(echo $(INCL))"; \
+			done
 
-fclean: clean
-	rm -f $(NAME)
+print		:
+			@for i in $(shell seq 1 $(words $(SRCDIRS))); do \
+				echo $$i $$(echo $(ARCHIVES) | cut -d ' ' -f $$i) \
+						"-C" $$(echo $(SRCDIRS) | cut -d ' ' -f $$i); \
+			done
+fclean		:
+			@for i in $(shell seq 1 $(words $(SRCDIRS))); do \
+				make fclean -C $$(echo $(SRCDIRS) | cut -d ' ' -f $$i) \
+						NAME="$$(echo $(ARCHIVES) | cut -d ' ' -f $$i)"; \
+			done
+			rm -f $(NAME) $(ARCHIVES) $(MRI)
 
-clean:
-	rm -f $(OBJ) $(BONUS_OBJ)
+clean		:
+			@for dir in $(SRCDIRS); do \
+				make clean -C $$dir; \
+			done
+			rm -f $(ARCHIVES) $(MRI)
 
-re: fclean all
+re		:	fclean all
 
-.PHONY : fclean clean all re bonus
+.PHONY	:	fclean clean all re

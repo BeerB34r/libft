@@ -1,0 +1,24 @@
+CC		=	cc
+CFLAGS	=	-Wall -Wextra -Werror
+SRCS	=
+OBJS	=	$(SRCS:.c=.o)
+INCL	=
+NAME	=	libgnl.a
+
+all		:	$(NAME)
+
+$(NAME)	:	$(OBJS)
+		ar -rcs $@ $?
+
+%.o		:	%.c
+		$(CC) $(CFLAGS) -o $@ -c $^ -I $(INCL)
+
+fclean	:	clean
+		rm -f $(NAME)
+
+clean	:
+		rm -f $(OBJS)
+
+re		:	fclean all
+
+.PHONY	:	fclean clean all re

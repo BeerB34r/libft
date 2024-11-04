@@ -6,7 +6,7 @@
 /*   By: mde-beer <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2024/10/07 17:18:24 by mde-beer       #+#    #+#                */
-/*   Updated: 2024/10/28 12:02:00 by mde-beer       ########   odam.nl        */
+/*   Updated: 2024/11/04 14:40:23 by mde-beer       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }	t_list;
+
 // is-something functions
 int		ft_isupper(int c);
 int		ft_islower(int c);
@@ -72,4 +73,7 @@ void	ft_lstdelone(t_list	*lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+// Finished projects
+# include <get_next_line_bonus.h>
+# include <ft_printf.h>
 #endif
