@@ -1,0 +1,6 @@
+[submodule "src/ft_printf"]
+	path = src/ft_printf
+	url = https://github.com/BeerB34r/ft_printf.git
+[submodule "src/get_next_line"]
+	path = src/get_next_line
+	url = https://github.com/BeerB34r/get_next_line.git
