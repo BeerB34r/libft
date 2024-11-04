@@ -26,12 +26,14 @@ $(MRI)		:
 			echo "save" >>$@
 			echo "end" >>$@
 
-$(ARCHIVES)	:
+$(ARCHIVES)	: $(ARS)
 			@for i in $(shell seq 1 $(words $(SRCDIRS))); do \
 				make NAME="$$(echo $(ARCHIVES) | cut -d ' ' -f $$i)" \
 						-C $$(echo $(SRCDIRS) | cut -d ' ' -f $$i) \
 						INCLUDE="$$(echo $(INCL))"; \
 			done
+$(ARS)		:
+			mkdir $(ARS)
 
 print		:
 			@for i in $(shell seq 1 $(words $(SRCDIRS))); do \
