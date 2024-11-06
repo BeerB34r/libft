@@ -6,7 +6,7 @@
 /*   By: mde-beer <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2024/10/07 17:18:24 by mde-beer       #+#    #+#                */
-/*   Updated: 2024/11/04 14:40:23 by mde-beer       ########   odam.nl        */
+/*   Updated: 2024/11/06 14:54:09 by mde-beer       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define LIBFT_H
 # include <stddef.h>
 # include <stdint.h>
+# include <get_next_line_bonus.h>
+# include <ft_printf.h>
 
 typedef struct s_list
 {
@@ -74,6 +76,4 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 // Finished projects
-# include <get_next_line_bonus.h>
-# include <ft_printf.h>
 #endif
